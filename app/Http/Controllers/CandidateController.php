@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\ResponseTrait;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 
 class CandidateController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +16,13 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $candidates = Candidate::get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        if (count($candidates) < 1) {
+            return $this->resultsNotFoundResponse('No candidates found!');
+        }
+
+        return $this->paginateResponse($candidates);
     }
 
     /**
@@ -35,51 +33,57 @@ class CandidateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $results = Candidate::create($data);
+
+        return $this->successResponse($results, 'Registered successfully!');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Candidate  $candidate
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Candidate $candidate)
+    public function show($id)
     {
-        //
-    }
+        $candidate = Candidate::where('id', $id)->get()->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Candidate  $candidate
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Candidate $candidate)
-    {
-        //
+        return $this->successResponse($candidate);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Candidate  $candidate
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Candidate $candidate)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $candidate = Candidate::findOrFail($id);
+
+        $candidate->update($data);
+
+        return $this->updateResponse('Info updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Candidate  $candidate
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Candidate $candidate)
+    public function destroy($id)
     {
-        //
+        $candidate = Candidate::findOrFail($id);
+
+        $candidate->delete();
+
+        return $this->updateResponse('Candidate trashed successfully!');
     }
 }

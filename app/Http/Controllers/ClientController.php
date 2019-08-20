@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\ResponseTrait;
-use App\Models\Project;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class ClientController extends Controller
 {
     use ResponseTrait;
     /**
@@ -16,9 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with(['client'])->get();
+        $clients = Client::get();
 
-        return $this->successResponse($projects);
+        return $this->paginateResponse($clients);
     }
 
     /**
@@ -31,9 +31,9 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $results = Project::create($data);
+        $results = Client::create($data);
 
-        return $this->successResponse($results, 'Project added successfully!');
+        return $this->successResponse($results, 'Registered successfully!');
     }
 
     /**
@@ -44,9 +44,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::with(['client'])->where('id', $id)->get()->first();
+        $client = Client::where('id', $id)->get()->first();
 
-        return $this->successResponse($project);
+        return $this->successResponse($client);
     }
 
     /**
@@ -60,11 +60,11 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $project = Project::findOrFail($id);
+        $client = Client::findOrFail($id);
 
-        $project->update($data);
+        $client->update($data);
 
-        return $this->updateResponse('Project updated successfully!');
+        return $this->updateResponse('Updated successfully!');
     }
 
     /**
@@ -75,10 +75,10 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::findOrFail($id);
+        $client = Client::findOrFail($id);
 
-        $project->delete();
+        $client->delete();
 
-        return $this->updateResponse('Project trashed!');
+        return $this->updateResponse('Client trashed successfully!');
     }
 }

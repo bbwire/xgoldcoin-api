@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class ShortList extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'description'
+        'project_id',
+        'candidate_id',
+        'stage',
+        'status'
     ];
 }

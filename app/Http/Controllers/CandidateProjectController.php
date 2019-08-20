@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\ResponseTrait;
-use App\Models\Project;
+use App\Models\CandidateProject;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class CandidateProjectController extends Controller
 {
     use ResponseTrait;
     /**
@@ -16,9 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with(['client'])->get();
+        $candidateProjects = CandidateProject::with('candidate')->get();
 
-        return $this->successResponse($projects);
+        return $this->successResponse($candidateProjects);
     }
 
     /**
@@ -31,9 +31,9 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $results = Project::create($data);
+        $results = CandidateProject::create($data);
 
-        return $this->successResponse($results, 'Project added successfully!');
+        $this->successResponse($results, 'Project added');
     }
 
     /**
@@ -44,9 +44,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::with(['client'])->where('id', $id)->get()->first();
+        $candidateProject = CandidateProject::with('candidate')->get()->first();
 
-        return $this->successResponse($project);
+        return $this->successResponse($candidateProject);
     }
 
     /**
@@ -60,9 +60,9 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $project = Project::findOrFail($id);
+        $candidateProject = CandidateProject::findOrFail($id);
 
-        $project->update($data);
+        $candidateProject->update($data);
 
         return $this->updateResponse('Project updated successfully!');
     }
@@ -75,10 +75,10 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::findOrFail($id);
+        $candidateProject = CandidateProject::findOrFail($id);
 
-        $project->delete();
+        $candidateProject->delete();
 
-        return $this->updateResponse('Project trashed!');
+        return $this->updateResponse('Project trashed successfully!');
     }
 }

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\ResponseTrait;
-use App\Models\Project;
+use App\Models\EducationDetail;
+use App\Models\EmploymentRecord;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class EmploymentRecordController extends Controller
 {
     use ResponseTrait;
     /**
@@ -16,9 +17,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with(['client'])->get();
+        $educationRecords = EmploymentRecord::with('candidate')->get();
 
-        return $this->successResponse($projects);
+        return $this->successResponse($educationRecords);
     }
 
     /**
@@ -31,9 +32,9 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $results = Project::create($data);
+        $results = EmploymentRecord::create($data);
 
-        return $this->successResponse($results, 'Project added successfully!');
+        return $this->successResponse($results, 'Education added!');
     }
 
     /**
@@ -44,9 +45,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::with(['client'])->where('id', $id)->get()->first();
+        $educationDetail = EmploymentRecord::with('candidate')->where('id', $id)->get()->first();
 
-        return $this->successResponse($project);
+        return $this->successResponse($educationDetail);
     }
 
     /**
@@ -60,11 +61,11 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $project = Project::findOrFail($id);
+        $educationDetail = EducationDetail::findOrFail($id);
 
-        $project->update($data);
+        $educationDetail->update($data);
 
-        return $this->updateResponse('Project updated successfully!');
+        return $this->updateResponse('Education updated');
     }
 
     /**
@@ -75,10 +76,10 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::findOrFail($id);
+        $educationDetail = EducationDetail::findOrFail($id);
 
-        $project->delete();
+        $educationDetail->delete();
 
-        return $this->updateResponse('Project trashed!');
+        return $this->updateResponse('Education trashed');
     }
 }

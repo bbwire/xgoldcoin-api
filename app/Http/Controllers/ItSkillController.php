@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\ResponseTrait;
-use App\Models\Project;
+use App\Models\ItSkill;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class ItSkillController extends Controller
 {
     use ResponseTrait;
     /**
@@ -16,9 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with(['client'])->get();
+        $itSkills = ItSkill::with('candidate')->get();
 
-        return $this->successResponse($projects);
+        return $this->successResponse($itSkills);
     }
 
     /**
@@ -31,9 +31,9 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $results = Project::create($data);
+        $results = ItSkill::create($data);
 
-        return $this->successResponse($results, 'Project added successfully!');
+        return $this->successResponse($results, 'New skill added');
     }
 
     /**
@@ -44,9 +44,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::with(['client'])->where('id', $id)->get()->first();
+        $itSkill = ItSkill::with('candidate')->where('id', $id)->get()->first();
 
-        return $this->successResponse($project);
+        return $this->successResponse($itSkill);
     }
 
     /**
@@ -60,11 +60,11 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $project = Project::findOrFail($id);
+        $itSkill = ItSkill::findOrFail($id);
 
-        $project->update($data);
+        $itSkill->update($data);
 
-        return $this->updateResponse('Project updated successfully!');
+        return $this->updateResponse('Skill updated successfully!');
     }
 
     /**
@@ -75,10 +75,10 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::findOrFail($id);
+        $itSkill = ItSkill::findOrFail($id);
 
-        $project->delete();
+        $itSkill->delete();
 
-        return $this->updateResponse('Project trashed!');
+        return $this->updateResponse('Skill trashed successfully!');
     }
 }

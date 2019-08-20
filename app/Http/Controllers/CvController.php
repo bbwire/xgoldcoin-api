@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\ResponseTrait;
-use App\Models\Project;
+use App\Models\Cv;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class CvController extends Controller
 {
     use ResponseTrait;
     /**
@@ -16,9 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with(['client'])->get();
+        $cvs = Cv::with('candidate')->get();
 
-        return $this->successResponse($projects);
+        return $this->successResponse($cvs);
     }
 
     /**
@@ -31,9 +31,9 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $results = Project::create($data);
+        $results = Cv::create($data);
 
-        return $this->successResponse($results, 'Project added successfully!');
+        return $this->successResponse($results, 'CV added successfully!');
     }
 
     /**
@@ -44,9 +44,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::with(['client'])->where('id', $id)->get()->first();
+        $cv = Cv::where('id', $id)->get()->first();
 
-        return $this->successResponse($project);
+        return $this->successResponse($cv);
     }
 
     /**
@@ -60,11 +60,11 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $project = Project::findOrFail($id);
+        $cv = Cv::findOrFail($id);
 
-        $project->update($data);
+        $cv->update($data);
 
-        return $this->updateResponse('Project updated successfully!');
+        return $this->updateResponse('CV info updated successfully!');
     }
 
     /**
@@ -75,10 +75,10 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::findOrFail($id);
+        $cv = Cv::findOrFail($id);
 
-        $project->delete();
+        $cv->delete();
 
-        return $this->updateResponse('Project trashed!');
+        return $this->updateResponse('CV trashed successfully!');
     }
 }

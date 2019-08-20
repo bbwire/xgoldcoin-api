@@ -5,11 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class Cv extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'description'
+        'candidate_id',
+        'title',
+        'path'
     ];
+
+    public function candidate () {
+        return $this->belongsTo(Candidate::class);
+    }
 }

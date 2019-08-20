@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\ResponseTrait;
 use App\Models\Application;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +16,13 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $applications = Application::with(['candidate', 'project'])->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        if (count($applications) < 1) {
+            return $this->resultsNotFoundResponse('No applications found');
+        }
+
+        return $this->paginateResponse($applications);
     }
 
     /**
@@ -35,51 +33,56 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $results = Application::create($data);
+
+        return $this->successResponse($results, 'You have successfully applied for a job');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Application  $application
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Application $application)
+    public function show($id)
     {
-        //
-    }
+        $application = Application::with(['candidate', 'project'])->where('id', $id)->get()->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Application  $application
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Application $application)
-    {
-        //
+        return $this->successResponse($application);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Application  $application
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Application $application)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $application = Application::findOrFail($id);
+
+        $application->update($data);
+
+        return $this->updateResponse('Application updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Application  $application
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Application $application)
+    public function destroy($id)
     {
-        //
+        $application = Application::findOrFail($id);
+
+        $application->delete();
+
+        return $this->updateResponse('Application trashed successfully!');
     }
 }

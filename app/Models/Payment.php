@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Application extends Model
+class Payment extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'candidate_id',
+        'employer_id',
         'project_id',
-        'cover_letter',
-        'status',
+        'amount',
+        'status'
     ];
 
-    public function candidate () {
-        return $this->belongsTo(Candidate::class);
+    public function employer () {
+        return $this->belongsTo(Employer::class);
     }
 
     public function project () {

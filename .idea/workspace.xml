@@ -2,19 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aac68452-633e-4975-aa6b-bfddce216c03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Traits/PaymentTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Traits/ResponseTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/constants.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_02_163553_create_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CandidateProjectController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyContactController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyDetailController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CvController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EducationDetailController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EmploymentRecordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ItSkillController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ShortListController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CandidateProject.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Client.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CompanyContact.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CompanyDetail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Cv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/EducationDetail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/EmploymentRecord.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ItSkill.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ShortList.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_07_082342_create_payments_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_07_082854_create_short_lists_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_08_235728_create_education_details_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_08_235926_create_employment_records_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_09_000247_create_candidate_projects_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_09_081519_create_clients_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_09_082000_create_company_details_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_09_082221_create_company_contacts_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/futureoptionsapi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/futureoptionsapi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CandidateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CandidateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SettingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Traits/PaymentTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Traits/PaymentTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Candidate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Candidate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Employer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Setting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_02_163553_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_09_083357_create_cvs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_02_164255_create_candidates_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_02_164255_create_candidates_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_02_164318_create_employers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_09_074801_create_it_skills_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_02_164330_create_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_02_164330_create_roles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_02_164343_create_settings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_02_164343_create_settings_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_02_164721_create_applications_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_02_164721_create_applications_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_02_164735_create_projects_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_02_164735_create_projects_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +164,13 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../smsappapi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mobilemoneyapi" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RunDashboard">
@@ -154,7 +203,21 @@
       <updated>1564746078709</updated>
       <workItem from="1564746090259" duration="303000" />
       <workItem from="1564747966101" duration="1711000" />
-      <workItem from="1564750223669" duration="1990000" />
+      <workItem from="1564750223669" duration="2185000" />
+      <workItem from="1564809820471" duration="382000" />
+      <workItem from="1565127755811" duration="866000" />
+      <workItem from="1565154497248" duration="1924000" />
+      <workItem from="1565160905431" duration="1829000" />
+      <workItem from="1565256095064" duration="162000" />
+      <workItem from="1565261061074" duration="3980000" />
+      <workItem from="1565297702565" duration="3107000" />
+      <workItem from="1565325981066" duration="3519000" />
+      <workItem from="1565342970364" duration="57000" />
+      <workItem from="1565420870871" duration="14125000" />
+      <workItem from="1565524764629" duration="3525000" />
+      <workItem from="1565611303896" duration="23000" />
+      <workItem from="1565958622890" duration="2173000" />
+      <workItem from="1566248281809" duration="50000" />
     </task>
     <servers />
   </component>
