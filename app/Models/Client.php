@@ -10,12 +10,15 @@ class Client extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'name',
+        'industry',
         'email',
-        'username',
-        'password',
+        'phone',
+        'photo',
+        'website_url',
         'verification_code',
         'status',
+        'username',
+        'password',
     ];
 }

@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         $data = $request->all();
 
-        $role = Role::where('id', $data['role_id'])->get()->first();
+//        $role = Role::where('id', $data['role_id'])->get()->first();
 
         // return $this->updateResponse($role->name);
 
@@ -54,7 +54,7 @@ class UserController extends Controller
         }
         else {
 
-            $token = $this->randomString(5);
+            $token = $this->randomString(25);
 
             $data['password'] = Hash::make($request->password);
 
@@ -179,6 +179,22 @@ class UserController extends Controller
 
         }else{
             return $this->resultsNotFoundResponse('There is a problem with your activation link, make sure you followed the right link!');
+        }
+    }
+
+    public function password_recovery (Request $request) {
+
+        $data = $request->all();
+
+        $user = User::where('email', $data['email'])
+            ->get()->first();
+
+        if ($user) {
+
+            return $this->updateResponse('Please check your email we have send a recovery link');
+
+        }else{
+            return $this->resultsNotFoundResponse('We could not recognize the email you entered!');
         }
     }
 }

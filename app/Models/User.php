@@ -17,7 +17,13 @@ class User extends Model
         'date_of_birth',
         'phone',
         'email',
-        'photo'
+        'photo',
+        'username',
+        'password'
+    ];
+
+    protected $hidden = [
+        'password'
     ];
 
     public function role () {
